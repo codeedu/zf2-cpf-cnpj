@@ -1,0 +1,21 @@
+<form method="post" action="">
+    <div>
+        <label>CPF</label>
+        <input type="text" name="cpf" value=""/>
+        <ul>
+            <?php foreach($messagesCpf as $v):?>
+                <li><?php echo $v?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <div>
+        <label>CNPJ</label>
+        <input type="text" name="cnpj" value=""/>
+        <ul>
+            <?php foreach($messagesCnpj as $v):?>
+                <li><?php echo $v?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <button type="submit" name="enviar">Enviar</button>
+</form>
