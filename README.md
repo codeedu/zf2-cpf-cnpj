@@ -1,77 +1,28 @@
-ZendSkeletonApplication
+Aplicação Multi-Layout com Zend Framework 2
 =======================
 
-Introduction
+Sobre este exemplo
 ------------
-This is a simple, skeleton application using the ZF2 MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to get their feet wet with ZF2.
+Sabemos o quão importante é validação de dados em uma aplicação, para manter as informações concisas e garantir a confiabilidade do sistema. 
+Não basta apenas validar os dados no cliente, porque, um usuário bem informado ou avançado, pode desativar o javascript e 
+passar os dados na requisição do modo que ele bem entender, prejudicando a aplicação. Portanto, tão importante 
+é a validação dos dados no cliente, mais ainda no servidor.
 
-Installation
-------------
+Podemos ver em muitos sistemas por aí, de comerciais a bancários, em que há somente a validação no front-end abrindo brechas para ataques na aplicação. 
+Aí, entraríamos em uma discussão no porque de não ter uma validação no servidor: Custos? Prazo? Desconhecimento? 
+Não entrarei nestes detalhes, até mesmo porque não é o foco deste artigo, mas sabemos que é 
+uma tarefa um tanto maçante estruturar uma validação no back-end e de modo ainda que possamos fazer um código padronizado e 
+pronto para o reuso em outras partes ou outras aplicações.
 
-Using Composer (recommended)
-----------------------------
-The recommended way to get a working copy of this project is to clone the repository
-and use `composer` to install dependencies using the `create-project` command:
+O Zend Framework 2 disponibiliza um incrível sistema de validações de dados e que na minha opinião é
+ um dos mais maduros componentes encontrados no mercado de frameworks PHP. Vou chamá-lo de Zend\Validator, 
+ referindo-se ao pacote/namespace que ele se encontra. Ele é apenas um componente do Zend Framework 2 
+ de outros tantos e é desacoplado, ou seja, não é preciso ficar preso ao framework inteiro para 
+ se usar apenas um "pedaço" dele, além disso, é uma característica marcante do Zend Framework 2, 
+ ser desacoplado, podemos usar seus componentes separadamente sem vínculo nenhum com a estrutura do framework e isto será ainda mais enfático no Zend Framework 3.
 
-    curl -s https://getcomposer.org/installer | php --
-    php composer.phar create-project -sdev --repository-url="https://packages.zendframework.com" zendframework/skeleton-application path/to/install
-
-Alternately, clone the repository and manually invoke `composer` using the shipped
-`composer.phar`:
-
-    cd my/project/dir
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git
-    cd ZendSkeletonApplication
-    php composer.phar self-update
-    php composer.phar install
-
-(The `self-update` directive is to ensure you have an up-to-date `composer.phar`
-available.)
-
-Another alternative for downloading the project is to grab it via `curl`, and
-then pass it to `tar`:
-
-    cd my/project/dir
-    curl -#L https://github.com/zendframework/ZendSkeletonApplication/tarball/master | tar xz --strip-components=1
-
-You would then invoke `composer` to install dependencies per the previous
-example.
-
-Using Git submodules
---------------------
-Alternatively, you can install using native git submodules:
-
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git --recursive
-
-Web Server Setup
-----------------
-
-### PHP CLI Server
-
-The simplest way to get started if you are using PHP 5.4 or above is to start the internal PHP cli-server in the root directory:
-
-    php -S 0.0.0.0:8080 -t public/ public/index.php
-
-This will start the cli-server on port 8080, and bind it to all network
-interfaces.
-
-**Note: ** The built-in CLI server is *for development only*.
-
-### Apache Setup
-
-To setup apache, setup a virtual host to point to the public/ directory of the
-project and you should be ready to go! It should look something like below:
-
-    <VirtualHost *:80>
-        ServerName zf2-tutorial.localhost
-        DocumentRoot /path/to/zf2-tutorial/public
-        SetEnv APPLICATION_ENV "development"
-        <Directory /path/to/zf2-tutorial/public>
-            DirectoryIndex index.php
-            AllowOverride All
-            Order allow,deny
-            Allow from all
-        </Directory>
-    </VirtualHost>
+O Zend\Validator já traz uma estrutura pré-definida para montagem de qualquer validação. 
+Quando queremos montar um validador específico, temos que herdar da classe AbstractValidator, 
+que obriga a implementarmos um método isValid para fazer a validação e retornar verdadeiro ou falso (true ou false),
+ também, ele nós dá uma estrutura de mensagens de erros de validação além de administrar variáveis internas que podemos criar para auxiliar na validação.
+ [Veja o link do tutorial](http://www.schoolofnet.com/2015/04/como-validar-cpf-e-cnpj-usando-zend-framework-2/)
