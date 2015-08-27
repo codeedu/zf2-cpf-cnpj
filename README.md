@@ -1,4 +1,4 @@
-Aplicação Multi-Layout com Zend Framework 2
+Exemplo de validação de CPF E CNPJ com Zend Framework 2
 =======================
 
 Sobre este exemplo
